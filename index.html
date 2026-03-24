@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,7 +11,7 @@
             --cream: #fdfcf9; /* Fondo principal */
             --celeste: #b3e5fc; /* Acentos y detalles */
             --light-blue: #e0f7fa; /* Fondo de la sección de contenido */
-            --gold: #b59410; /* Títulos principales */
+            --gold: #b59410; /* Títulos principales y marcos */
             --dark-navy: #0d2c4b; /* Texto del cuerpo y subtítulos */
             --border-color: #e1f5fe; /* Bordes delicados */
             --text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
@@ -26,6 +25,12 @@
             padding: 0;
             text-align: center;
             overflow-x: hidden;
+            /* Fondo sutil inspirado en el mar, tulipanes y color celeste */
+            background-image: 
+                linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(224,247,250,0.3) 100%), 
+                url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"%3E%3Cpath fill="%23b3e5fc" fill-opacity="0.2" d="M100 10c14.1 0 27.6 5.6 37.7 15.7l50 50c10.1 10.1 15.7 23.6 15.7 37.7s-5.6 27.6-15.7 37.7l-50 50c-10.1 10.1-23.6 15.7-37.7 15.7s-27.6-5.6-37.7-15.7l-50-50C2.9 143 0 129.5 0 115.4s2.9-27.6 13-37.7l50-50C73.1 17.6 86.6 12 100 12zm0-2c-15.3 0-29.8 6.1-40.4 16.7L10.7 74.7C0 85.3 0 100.2 10.7 110.8l48.9 48.9C70.2 170.4 84.7 176.5 100 176.5s29.8-6.1 40.4-16.7l48.9-48.9C200 100.2 200 85.3 189.3 74.7l-48.9-48.9C129.8 15.1 115.3 9 100 9z"/%3E%3Cpath fill="%23b3e5fc" fill-opacity="0.2" d="M100 120c-11.1 0-20-8.9-20-20s8.9-20 20-20 20 8.9 20 20-8.9 20-20 20zm0-38.2c-10 0-18.2 8.2-18.2 18.2s8.2 18.2 18.2 18.2 18.2-8.2 18.2-18.2-8.2-18.2-18.2-18.2z"/%3E%3Cpath fill="%23b3e5fc" fill-opacity="0.2" d="M130 150c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10zm0-18.2c-4.5 0-8.2 3.7-8.2 8.2s3.7 8.2 8.2 8.2 8.2-3.7 8.2-8.2-3.7-8.2-8.2-8.2z"/%3E%3Cpath fill="%23b3e5fc" fill-opacity="0.2" d="M70 150c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10zm0-18.2c-4.5 0-8.2 3.7-8.2 8.2s3.7 8.2 8.2 8.2 8.2-3.7 8.2-8.2-3.7-8.2-8.2-8.2z"/%3E%3Cpath fill="%23b3e5fc" fill-opacity="0.2" d="M130 70c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10zm0-18.2c-4.5 0-8.2 3.7-8.2 8.2s3.7 8.2 8.2 8.2 8.2-3.7 8.2-8.2-3.7-8.2-8.2-8.2z"/%3E%3Cpath fill="%23b3e5fc" fill-opacity="0.2" d="M70 70c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10zm0-18.2c-4.5 0-8.2 3.7-8.2 8.2s3.7 8.2 8.2 8.2 8.2-3.7 8.2-8.2-3.7-8.2-8.2-8.2z"/%3E%3C/svg%3E');
+            background-size: 200px 200px;
+            background-attachment: fixed;
         }
 
         /* Tipografías de los títulos */
@@ -59,11 +64,10 @@
             color: var(--gold);
         }
 
-        /* --- Sección Hero (Actualizada para side-by-side) --- */
+        /* --- Sección Hero (Principal con Foto y Mensaje side-by-side) --- */
         .hero {
             display: grid;
             grid-template-columns: 1fr;
-            background-color: var(--cream);
             padding: 60px 20px;
             position: relative;
         }
@@ -147,7 +151,6 @@
 
         /* --- Separador de Texto --- */
         .text-separator {
-            background-color: var(--cream);
             padding: 40px 20px;
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
@@ -156,6 +159,7 @@
             color: var(--dark-navy);
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
+            background-color: rgba(255,255,255,0.5); /* Sutil fondo */
         }
 
         .text-separator .details {
@@ -171,8 +175,8 @@
         .main-content {
             background-color: var(--light-blue);
             padding: 60px 20px;
-            background-image: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(224,247,250,0.3) 100%), 
-                              url('https://i.imgur.com/vHqY7bM.png'); /* Textura sutil de mármol/tulipanes */
+            /* Sutil textura adicional */
+            background-image: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(224,247,250,0.3) 100%);
             background-size: cover;
             background-attachment: fixed;
         }
@@ -191,7 +195,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- Galería de Fotos (Actualizada para 14 fotos) --- */
+        /* --- Galería de Fotos (Actualizada para 14 fotos con marcos dorados sofisticados) --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr); /* Mobile: 2 columnas */
@@ -221,6 +225,7 @@
             padding: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.15);
             transition: transform 0.3s ease;
+            cursor: pointer; /* Indica interactividad */
         }
 
         .gallery-item:hover {
@@ -232,9 +237,61 @@
             height: auto;
             display: block;
             border-radius: 2px;
+            aspect-ratio: 1/1; /* Encuadre cuadrado sofisticado */
+            object-fit: cover; /* Asegura que la imagen llene el espacio */
         }
 
-        /* --- Reproductor de Audio --- */
+        /* --- Lightbox / Superposición para fotos y mensajes de amor --- */
+        .lightbox-overlay {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9); /* Fondo oscuro */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 80%;
+            text-align: center;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            border: 2px solid var(--gold); /* Marco dorado */
+            border-radius: 5px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-message {
+            color: var(--cream);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .close-button {
+            position: absolute;
+            top: -30px;
+            right: 0;
+            font-size: 2.5em;
+            color: var(--gold);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* --- Reproductor de Audio (Actualizado para "Just the Way You Are") --- */
         .audio-player-container {
             background-color: rgba(255,255,255,0.9);
             border-radius: 50px;
@@ -265,7 +322,7 @@
             background-color: rgba(255,255,255,0.9);
         }
 
-        /* --- Footer --- */
+        /* --- Footer (Actualizado para eliminar [Tu Nombre]) --- */
         footer {
             background-color: var(--cream);
             padding: 30px;
@@ -285,7 +342,7 @@
 
     <header>
         <a href="#fotos">TUS FOTOS</a>
-        <a href="#cancion">NUESTRA CANCIÓN</a>
+        <a href="#cancion">CANCION</a>
     </header>
 
     <section class="hero">
@@ -306,7 +363,7 @@
 
     <section class="text-separator">
         TÚ ERES MI COMPAÑERA DE VIDA.
-        <div class="details">Celebrando tu día especial con todo mi amor <span class="mar"></span> [Tu Nombre]</div>
+        <div class="details">Celebrando tu día especial con todo mi amor <span class="mar"></span> [Año Actual]</div>
     </section>
 
     <main class="main-content">
@@ -315,24 +372,24 @@
         </div>
 
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="foto_galeria_1.jpg" alt="Foto de galería 1"></div>
-            <div class="gallery-item"><img src="foto_galeria_2.jpg" alt="Foto de galería 2"></div>
-            <div class="gallery-item"><img src="foto_galeria_3.jpg" alt="Foto de galería 3"></div>
-            <div class="gallery-item"><img src="foto_galeria_4.jpg" alt="Foto de galería 4"></div>
-            <div class="gallery-item"><img src="foto_galeria_5.jpg" alt="Foto de galería 5"></div>
-            <div class="gallery-item"><img src="foto_galeria_6.jpg" alt="Foto de galería 6"></div>
-            <div class="gallery-item"><img src="foto_galeria_7.jpg" alt="Foto de galería 7"></div>
-            <div class="gallery-item"><img src="foto_galeria_8.jpg" alt="Foto de galería 8"></div>
-            <div class="gallery-item"><img src="foto_galeria_9.jpg" alt="Foto de galería 9"></div>
-            <div class="gallery-item"><img src="foto_galeria_10.jpg" alt="Foto de galería 10"></div>
-            <div class="gallery-item"><img src="foto_galeria_11.jpg" alt="Foto de galería 11"></div>
-            <div class="gallery-item"><img src="foto_galeria_12.jpg" alt="Foto de galería 12"></div>
-            <div class="gallery-item"><img src="foto_galeria_13.jpg" alt="Foto de galería 13"></div>
-            <div class="gallery-item"><img src="foto_galeria_14.jpg" alt="Foto de galería 14"></div>
+            <div class="gallery-item" data-message="Cada día a tu lado es un regalo 💖"><img src="foto_galeria_1.jpg" alt="Foto de galería 1"></div>
+            <div class="gallery-item" data-message="Tu sonrisa ilumina mi mundo entero ✨"><img src="foto_galeria_2.jpg" alt="Foto de galería 2"></div>
+            <div class="gallery-item" data-message="Eres mi refugio y mi paz 🧘‍♂️"><img src="foto_galeria_3.jpg" alt="Foto de galería 3"></div>
+            <div class="gallery-item" data-message="Gracias por enseñarme a amar de nuevo 🫶"><img src="foto_galeria_4.jpg" alt="Foto de galería 4"></div>
+            <div class="gallery-item" data-message="Nuestro futuro está lleno de sueños cumplidos 🌟"><img src="foto_galeria_5.jpg" alt="Foto de galería 5"></div>
+            <div class="gallery-item" data-message="Te amo por como eres, sencillamente perfecta 😊"><img src="foto_galeria_6.jpg" alt="Foto de galería 6"></div>
+            <div class="gallery-item" data-message="Eres mi compañera de vida ideal, Seli 💗"><img src="foto_galeria_7.jpg" alt="Foto de galería 7"></div>
+            <div class="gallery-item" data-message="Cada recuerdo contigo es un tesoro 💎"><img src="foto_galeria_8.jpg" alt="Foto de galería 8"></div>
+            <div class="gallery-item" data-message="Mi esposita hermosa, mi todo 🙏"><img src="foto_galeria_9.jpg" alt="Foto de galería 9"></div>
+            <div class="gallery-item" data-message="Contigo, la vida es una aventura maravillosa 🗺️"><img src="foto_galeria_10.jpg" alt="Foto de galería 10"></div>
+            <div class="gallery-item" data-message="Eres la razón de mi felicidad diaria 😁"><img src="foto_galeria_11.jpg" alt="Foto de galería 11"></div>
+            <div class="gallery-item" data-message="Me encanta cómo nos entendemos, incluso sin palabras 🤫"><img src="foto_galeria_12.jpg" alt="Foto de galería 12"></div>
+            <div class="gallery-item" data-message="Envejecer juntos es mi plan favorito 😊"><img src="foto_galeria_13.jpg" alt="Foto de galería 13"></div>
+            <div class="gallery-item" data-message="Te amo mi Seli, hoy y siempre <3"><img src="foto_galeria_14.jpg" alt="Foto de galería 14"></div>
         </div>
 
         <div id="cancion" class="audio-player-container">
-            <p>🎶 NUESTRA CANCIÓN (OCEAN WHISPERS)</p>
+            <p>🎶 Just the Way You Are</p>
             <audio controls autoplay loop>
                 <source src="cancion.mp3" type="audio/mpeg">
                 Tu navegador no soporta el elemento de audio.
@@ -342,8 +399,46 @@
     </main>
 
     <footer>
-        Con todo mi amor, [Tu Nombre]. [Año]
+        Con todo mi amor. [Año Actual]
     </footer>
+
+    <div class="lightbox-overlay" id="lightbox">
+        <div class="lightbox-content">
+            <span class="close-button" id="close-lightbox">&times;</span>
+            <img id="lightbox-img" src="" alt="Foto en sobreposición">
+            <p class="lightbox-message" id="lightbox-msg"></p>
+        </div>
+    </div>
+
+    <script>
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxMsg = document.getElementById('lightbox-msg');
+        const closeLightbox = document.getElementById('close-lightbox');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                const message = item.getAttribute('data-message');
+                
+                lightboxImg.src = imgSrc;
+                lightboxMsg.textContent = message;
+                lightbox.style.display = 'flex';
+            });
+        });
+
+        closeLightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        // Cerrar al hacer clic fuera de la imagen
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+    </script>
 
 </body>
 </html>
