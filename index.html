@@ -7,9 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --cream: #fdfcf9;
-            --celeste: #b3e5fc;
-            --light-blue: #e0f7fa;
+            --cream: #fbfaf6; /* Fondo base crema claro como en la foto */
+            --slate-blue: #7ea4b3; /* Azul pizarra de las conchas/estrellas */
             --gold: #b59410;
             --gold-hover: #94790b;
             --dark-navy: #0d2c4b;
@@ -24,11 +23,10 @@
             padding: 0;
             text-align: center;
             overflow-x: hidden;
-            /* Fondo sutil celeste, mar y flores */
-            background-image: 
-                linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(224,247,250,0.5) 100%), 
-                url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"%3E%3Cpath fill="%23b3e5fc" fill-opacity="0.3" d="M100 10c14.1 0 27.6 5.6 37.7 15.7l50 50c10.1 10.1 15.7 23.6 15.7 37.7s-5.6 27.6-15.7 37.7l-50 50c-10.1 10.1-23.6 15.7-37.7 15.7s-27.6-5.6-37.7-15.7l-50-50C2.9 143 0 129.5 0 115.4s2.9-27.6 13-37.7l50-50C73.1 17.6 86.6 12 100 12zm0-2c-15.3 0-29.8 6.1-40.4 16.7L10.7 74.7C0 85.3 0 100.2 10.7 110.8l48.9 48.9C70.2 170.4 84.7 176.5 100 176.5s29.8-6.1 40.4-16.7l48.9-48.9C200 100.2 200 85.3 189.3 74.7l-48.9-48.9C129.8 15.1 115.3 9 100 9z"/%3E%3C/svg%3E');
-            background-size: 200px 200px;
+            
+            /* Fondo general: Estrellas de mar y conchas dibujadas */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg stroke='%237ea4b3' stroke-width='1.5' fill='none' opacity='0.3'%3E%3Cpath d='M 30 15 L 34 26 L 46 26 L 36 33 L 40 44 L 30 37 L 20 44 L 24 33 L 14 26 L 26 26 Z' stroke-linejoin='round'/%3E%3Cpath d='M 30 15 L 30 37 M 20 44 L 34 26 M 40 44 L 26 26' stroke-width='0.5'/%3E%3Cpath d='M 110 90 C 130 90 135 110 120 125 C 105 140 85 135 85 115 C 85 95 100 90 110 90 Z' /%3E%3Cpath d='M 85 115 C 95 120 110 125 120 125 M 90 105 C 105 115 115 120 125 115 M 95 95 C 110 105 120 110 130 100' stroke-width='1'/%3E%3Cpath d='M 85 115 L 75 125 L 80 130 L 90 125' /%3E%3C/g%3E%3C/svg%3E");
+            background-size: 150px 150px;
             background-attachment: fixed;
         }
 
@@ -65,16 +63,15 @@
 
         /* --- Secciones Dinámicas --- */
         .seccion {
-            display: none; /* Ocultas por defecto, controladas por JS */
+            display: none; /* Ocultas por defecto */
             padding: 60px 20px;
-            min-height: 80vh; /* Para que ocupen casi toda la pantalla */
+            min-height: 80vh; 
             flex-direction: column;
             justify-content: center;
             align-items: center;
             animation: fadeIn 1s ease-in-out;
         }
 
-        /* El inicio sí se muestra por defecto */
         #inicio {
             display: flex;
             height: 100vh;
@@ -85,7 +82,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Estilos del Inicio --- */
         #inicio h1 {
             font-size: 3.5em;
             margin-bottom: 30px;
@@ -94,14 +90,25 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* --- Estilos del Mensaje y Foto Principal --- */
+        /* --- Estilos del Mensaje Principal y Fondo de Tulipanes --- */
+        #mensaje-principal {
+            /* Fondo exclusivo de tulipanes dibujados en el mismo estilo/color */
+            background-color: var(--cream);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg stroke='%237ea4b3' stroke-width='1.5' fill='none' opacity='0.3'%3E%3Cpath d='M 40 50 Q 25 35 30 15 Q 40 25 40 35 Q 40 25 50 15 Q 55 35 40 50 Z' /%3E%3Cpath d='M 40 50 Q 40 65 35 80 M 40 65 Q 45 55 55 50 Q 45 60 40 65' /%3E%3Cpath d='M 110 120 Q 95 105 100 85 Q 110 95 110 105 Q 110 95 120 85 Q 125 105 110 120 Z' /%3E%3Cpath d='M 110 120 Q 110 135 105 150 M 110 135 Q 115 125 125 120 Q 115 130 110 135' /%3E%3C/g%3E%3C/svg%3E");
+            background-size: 150px 150px;
+            background-attachment: fixed;
+            position: relative;
+        }
+
         .contenedor-mensaje {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 40px;
+            position: relative;
+            z-index: 2;
         }
 
         @media (min-width: 1024px) {
@@ -120,14 +127,16 @@
         }
 
         .carta-amor {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 45px; /* Más espacio interior para que no se vea apretado */
             border-radius: 15px;
             border: 1px solid var(--border-color);
-            line-height: 2;
-            font-size: 1.1em;
+            line-height: 2.3; /* Mayor separación entre líneas */
+            font-size: 1.15em;
             font-weight: 400;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* --- Separador --- */
@@ -136,10 +145,10 @@
             padding: 40px 20px;
             font-family: 'Playfair Display', serif;
             font-size: 1.5em;
-            color: var(--gold); /* Color dorado que resalta */
-            background-color: rgba(255,255,255,0.6);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
+            color: var(--gold);
+            background-color: rgba(255,255,255,0.8);
+            border-top: 1px solid var(--slate-blue);
+            border-bottom: 1px solid var(--slate-blue);
             margin: 40px 0;
             box-sizing: border-box;
         }
@@ -157,22 +166,17 @@
             text-transform: uppercase;
         }
 
+        /* Modificado a Flexbox para centrar las últimas fotos automáticamente */
         .grid-galeria {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Esto centra las fotos de la última fila */
+            gap: 20px;
             padding: 0 20px;
         }
 
-        @media (min-width: 768px) {
-            .grid-galeria { grid-template-columns: repeat(3, 1fr); gap: 25px; }
-        }
-
-        @media (min-width: 1024px) {
-            .grid-galeria { grid-template-columns: repeat(4, 1fr); gap: 30px; }
-        }
-
         .item-foto {
+            width: calc(50% - 10px); /* 2 columnas en móviles */
             border: 2px solid var(--gold);
             border-radius: 5px;
             background-color: #fff;
@@ -180,6 +184,15 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
             cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        @media (min-width: 768px) {
+            .item-foto { width: calc(33.333% - 14px); } /* 3 columnas en tablets */
+        }
+
+        @media (min-width: 1024px) {
+            .item-foto { width: calc(25% - 15px); } /* 4 columnas en PC */
         }
 
         .item-foto:hover {
@@ -194,7 +207,7 @@
             border-radius: 2px;
         }
 
-        /* --- Lightbox (Visualizador de fotos interactivo) --- */
+        /* --- Lightbox --- */
         .lightbox {
             display: none;
             position: fixed;
@@ -202,13 +215,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(13, 44, 75, 0.95); /* Azul marino muy oscuro/transparente */
+            background-color: rgba(13, 44, 75, 0.95);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             padding: 20px;
-            cursor: zoom-out; /* Indica que al hacer clic se cierra */
+            cursor: zoom-out;
         }
 
         .lightbox-contenido {
@@ -216,10 +229,9 @@
             max-width: 90vw;
             max-height: 85vh;
             text-align: center;
-            pointer-events: none; /* Para que el clic pase al fondo y cierre */
+            pointer-events: none;
         }
 
-        /* Evita que la foto se deforme */
         .lightbox-contenido img {
             max-width: 100%;
             max-height: 70vh;
@@ -229,7 +241,7 @@
             border: 3px solid var(--gold);
             border-radius: 5px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            pointer-events: auto; /* Permite interacción si fuera necesario */
+            pointer-events: auto;
         }
 
         .mensaje-foto {
@@ -240,27 +252,13 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* --- Reproductor de Audio --- */
+        /* --- Reproductor de Audio (Oculto porque toca automático, pero lo dejamos por si acaso) --- */
         .reproductor {
-            background-color: rgba(255,255,255,0.9);
-            border-radius: 50px;
-            border: 1px solid var(--border-color);
-            padding: 15px 30px;
             margin: 60px auto;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
             max-width: 400px;
         }
-
-        .reproductor p {
-            color: var(--dark-navy);
-            font-weight: 600;
-            margin-top: 0;
-            margin-bottom: 10px;
-        }
-
         audio { width: 100%; outline: none; }
 
-        /* --- Footer --- */
         footer {
             padding: 30px;
             color: var(--gold);
@@ -273,6 +271,10 @@
 </head>
 <body>
 
+    <audio id="musica-fondo" loop>
+        <source src="cancion.mp3" type="audio/mpeg">
+    </audio>
+
     <section id="inicio" class="seccion">
         <h1>Feliz cumpleaños mi amor</h1>
         <button id="btn-regalo" class="btn-dorado">Mi regalo te espera</button>
@@ -283,7 +285,7 @@
             <img src="imagen_principal.jpg" alt="Mi Seli" class="foto-principal">
             
             <div class="carta-amor">
-                <p><strong>Mi amor, ya llevamos casi 1 año juntos,</strong> hemos pasado muchas cosas en este corto tiempo, hemos aprendido mucho uno del otro, me comentaste tus problemas, las cosas que te afligen, las cosas que te gustan, lo que te disgusta, me enseñaste lo que es estar enamorado de nuevo, por eso te quiero dar gracias mi vida, tenemos muchos planes a futuro y los vamos a cumplir, juntos, te amo, sabes lo mucho que me cuesta decir esa palabra por todo lo que he pasado, pero es la única palabra que puedo decirte, ya que expresa lo que siento por ti, te amo mi Seli, feliz cumpleaños a mi esposita hermosa, mi compañera de vida, mi todo, te amo mi Seli.</p>
+                <p>"Mi amor, ya llevamos casi 1 año juntos, hemos pasado muchas cosas en este corto tiempo, hemos aprendido mucho uno del otro, me comentaste tus problemas, las cosas que te afligen, las cosas que te gustan, lo que te disgusta, me enseñaste lo que es estar enamorado de nuevo, por eso te quiero dar gracias mi vida, tenemos muchos planes a futuro y los vamos a cumplir, juntos, te amo, sabes lo mucho que me cuesta decir esa palabra por todo lo que he pasado, pero es la única palabra que puedo decirte, ya que expresa lo que siento por ti, te amo mi Seli, feliz cumpleaños a mi esposita hermosa, mi compañera de vida, mi todo, te amo mi Seli."</p>
             </div>
         </div>
         
@@ -297,27 +299,26 @@
         </div>
 
         <div class="grid-galeria">
-            <div class="item-foto" data-mensaje="Cada día a tu lado es un regalo"><img src="foto_galeria_1.jpg" alt="Recuerdo 1"></div>
-            <div class="item-foto" data-mensaje="Tu sonrisa ilumina mi mundo entero"><img src="foto_galeria_2.jpg" alt="Recuerdo 2"></div>
-            <div class="item-foto" data-mensaje="Eres mi refugio y mi paz"><img src="foto_galeria_3.jpg" alt="Recuerdo 3"></div>
-            <div class="item-foto" data-mensaje="Gracias por enseñarme a amar de nuevo"><img src="foto_galeria_4.jpg" alt="Recuerdo 4"></div>
-            <div class="item-foto" data-mensaje="Nuestro futuro está lleno de sueños cumplidos"><img src="foto_galeria_5.jpg" alt="Recuerdo 5"></div>
-            <div class="item-foto" data-mensaje="Te amo por como eres, sencillamente perfecta"><img src="foto_galeria_6.jpg" alt="Recuerdo 6"></div>
-            <div class="item-foto" data-mensaje="Eres mi compañera de vida ideal, Seli"><img src="foto_galeria_7.jpg" alt="Recuerdo 7"></div>
-            <div class="item-foto" data-mensaje="Cada recuerdo contigo es un tesoro"><img src="foto_galeria_8.jpg" alt="Recuerdo 8"></div>
-            <div class="item-foto" data-mensaje="Mi esposita hermosa, mi todo"><img src="foto_galeria_9.jpg" alt="Recuerdo 9"></div>
-            <div class="item-foto" data-mensaje="Contigo, la vida es una aventura maravillosa"><img src="foto_galeria_10.jpg" alt="Recuerdo 10"></div>
-            <div class="item-foto" data-mensaje="Eres la razón de mi felicidad diaria"><img src="foto_galeria_11.jpg" alt="Recuerdo 11"></div>
-            <div class="item-foto" data-mensaje="Me encanta cómo nos entendemos, incluso sin palabras"><img src="foto_galeria_12.jpg" alt="Recuerdo 12"></div>
-            <div class="item-foto" data-mensaje="Envejecer juntos es mi plan favorito"><img src="foto_galeria_13.jpg" alt="Recuerdo 13"></div>
-            <div class="item-foto" data-mensaje="Te amo mi Seli, hoy y siempre"><img src="foto_galeria_14.jpg" alt="Recuerdo 14"></div>
+            <div class="item-foto" data-mensaje='"Cada día a tu lado es un regalo"'><img src="foto_galeria_1.jpg" alt="Recuerdo 1"></div>
+            <div class="item-foto" data-mensaje='"Tu sonrisa ilumina mi mundo entero"'><img src="foto_galeria_2.jpg" alt="Recuerdo 2"></div>
+            <div class="item-foto" data-mensaje='"Eres mi refugio y mi paz"'><img src="foto_galeria_3.jpg" alt="Recuerdo 3"></div>
+            <div class="item-foto" data-mensaje='"Gracias por enseñarme a amar de nuevo"'><img src="foto_galeria_4.jpg" alt="Recuerdo 4"></div>
+            <div class="item-foto" data-mensaje='"Nuestro futuro está lleno de sueños cumplidos"'><img src="foto_galeria_5.jpg" alt="Recuerdo 5"></div>
+            <div class="item-foto" data-mensaje='"Te amo por como eres, sencillamente perfecta"'><img src="foto_galeria_6.jpg" alt="Recuerdo 6"></div>
+            <div class="item-foto" data-mensaje='"Eres mi compañera de vida ideal, Seli"'><img src="foto_galeria_7.jpg" alt="Recuerdo 7"></div>
+            <div class="item-foto" data-mensaje='"Cada recuerdo contigo es un tesoro"'><img src="foto_galeria_8.jpg" alt="Recuerdo 8"></div>
+            <div class="item-foto" data-mensaje='"Mi esposita hermosa, mi todo"'><img src="foto_galeria_9.jpg" alt="Recuerdo 9"></div>
+            <div class="item-foto" data-mensaje='"Contigo, la vida es una aventura maravillosa"'><img src="foto_galeria_10.jpg" alt="Recuerdo 10"></div>
+            <div class="item-foto" data-mensaje='"Eres la razón de mi felicidad diaria"'><img src="foto_galeria_11.jpg" alt="Recuerdo 11"></div>
+            <div class="item-foto" data-mensaje='"Me encanta cómo nos entendemos, incluso sin palabras"'><img src="foto_galeria_12.jpg" alt="Recuerdo 12"></div>
+            <div class="item-foto" data-mensaje='"Envejecer juntos es mi plan favorito"'><img src="foto_galeria_13.jpg" alt="Recuerdo 13"></div>
+            <div class="item-foto" data-mensaje='"Te amo mi Seli, hoy y siempre"'><img src="foto_galeria_14.jpg" alt="Recuerdo 14"></div>
         </div>
 
         <div class="reproductor">
-            <p>🎶 Just the Way You Are</p>
-            <audio controls loop>
+            <p style="color: var(--dark-navy); font-weight: 600;">🎶 Just the Way You Are</p>
+            <audio controls loop id="control-audio">
                 <source src="cancion.mp3" type="audio/mpeg">
-                Tu navegador no soporta audio.
             </audio>
         </div>
 
@@ -334,28 +335,33 @@
     </div>
 
     <script>
-        // Lógica de los botones para mostrar secciones
         const btnRegalo = document.getElementById('btn-regalo');
+        const btnRecuerdos = document.getElementById('btn-recuerdos');
         const inicioSec = document.getElementById('inicio');
         const mensajeSec = document.getElementById('mensaje-principal');
-        
-        const btnRecuerdos = document.getElementById('btn-recuerdos');
         const galeriaSec = document.getElementById('galeria-recuerdos');
+        const musica = document.getElementById('musica-fondo');
+        const controlAudio = document.getElementById('control-audio');
 
+        // Acción al presionar el primer botón
         btnRegalo.addEventListener('click', () => {
+            // Reproducir música al darle al primer botón
+            if(musica) {
+                musica.play().catch(e => console.log("Navegador bloqueó el autoplay."));
+                // Sincronizar el reproductor visible abajo
+                controlAudio.play().catch(e => console.log(""));
+            }
+
             inicioSec.style.display = 'none';
             mensajeSec.style.display = 'flex';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
+        // Acción al presionar el segundo botón
         btnRecuerdos.addEventListener('click', () => {
-            btnRecuerdos.style.display = 'none'; // Oculta el botón tras pulsarlo
+            btnRecuerdos.style.display = 'none'; 
             galeriaSec.style.display = 'flex';
             galeriaSec.scrollIntoView({ behavior: 'smooth' });
-            
-            // Auto-reproducir la canción al llegar a la galería (algunos navegadores lo bloquean si no hay interacción directa, pero al haber hecho clic en el botón, suele permitirse)
-            const audio = document.querySelector('audio');
-            if(audio) audio.play().catch(e => console.log("Auto-play bloqueado por el navegador, ella tendrá que darle play manualmente."));
         });
 
         // Lógica del Lightbox (Visor de fotos)
@@ -375,7 +381,6 @@
             });
         });
 
-        // Cerrar visor al hacer clic en cualquier parte de la pantalla oscura
         visor.addEventListener('click', () => {
             visor.style.display = 'none';
         });
