@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --cream: #fbfaf6; /* Fondo base crema claro como en la foto */
-            --slate-blue: #7ea4b3; /* Azul pizarra de las conchas/estrellas */
+            --cream: #fbfaf6; 
+            --slate-blue: #7ea4b3; 
             --gold: #b59410;
             --gold-hover: #94790b;
             --dark-navy: #0d2c4b;
@@ -63,7 +63,7 @@
 
         /* --- Secciones Dinámicas --- */
         .seccion {
-            display: none; /* Ocultas por defecto */
+            display: none; 
             padding: 60px 20px;
             min-height: 80vh; 
             flex-direction: column;
@@ -92,7 +92,6 @@
 
         /* --- Estilos del Mensaje Principal y Fondo de Tulipanes --- */
         #mensaje-principal {
-            /* Fondo exclusivo de tulipanes dibujados en el mismo estilo/color */
             background-color: var(--cream);
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg stroke='%237ea4b3' stroke-width='1.5' fill='none' opacity='0.3'%3E%3Cpath d='M 40 50 Q 25 35 30 15 Q 40 25 40 35 Q 40 25 50 15 Q 55 35 40 50 Z' /%3E%3Cpath d='M 40 50 Q 40 65 35 80 M 40 65 Q 45 55 55 50 Q 45 60 40 65' /%3E%3Cpath d='M 110 120 Q 95 105 100 85 Q 110 95 110 105 Q 110 95 120 85 Q 125 105 110 120 Z' /%3E%3Cpath d='M 110 120 Q 110 135 105 150 M 110 135 Q 115 125 125 120 Q 115 130 110 135' /%3E%3C/g%3E%3C/svg%3E");
             background-size: 150px 150px;
@@ -128,10 +127,10 @@
 
         .carta-amor {
             background: rgba(255, 255, 255, 0.95);
-            padding: 50px 45px; /* Más espacio interior para que no se vea apretado */
+            padding: 50px 45px; 
             border-radius: 15px;
             border: 1px solid var(--border-color);
-            line-height: 2.3; /* Mayor separación entre líneas */
+            line-height: 2.3; 
             font-size: 1.15em;
             font-weight: 400;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -166,17 +165,16 @@
             text-transform: uppercase;
         }
 
-        /* Modificado a Flexbox para centrar las últimas fotos automáticamente */
         .grid-galeria {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* Esto centra las fotos de la última fila */
+            justify-content: center; 
             gap: 20px;
             padding: 0 20px;
         }
 
         .item-foto {
-            width: calc(50% - 10px); /* 2 columnas en móviles */
+            width: calc(50% - 10px); 
             border: 2px solid var(--gold);
             border-radius: 5px;
             background-color: #fff;
@@ -188,11 +186,11 @@
         }
 
         @media (min-width: 768px) {
-            .item-foto { width: calc(33.333% - 14px); } /* 3 columnas en tablets */
+            .item-foto { width: calc(33.333% - 14px); } 
         }
 
         @media (min-width: 1024px) {
-            .item-foto { width: calc(25% - 15px); } /* 4 columnas en PC */
+            .item-foto { width: calc(25% - 15px); } 
         }
 
         .item-foto:hover {
@@ -252,7 +250,7 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
-        /* --- Reproductor de Audio (Oculto porque toca automático, pero lo dejamos por si acaso) --- */
+        /* --- Reproductor de Audio --- */
         .reproductor {
             margin: 60px auto;
             max-width: 400px;
@@ -270,10 +268,6 @@
     </style>
 </head>
 <body>
-
-    <audio id="musica-fondo" loop>
-        <source src="cancion.mp3" type="audio/mpeg">
-    </audio>
 
     <section id="inicio" class="seccion">
         <h1>Feliz cumpleaños mi amor</h1>
@@ -340,16 +334,13 @@
         const inicioSec = document.getElementById('inicio');
         const mensajeSec = document.getElementById('mensaje-principal');
         const galeriaSec = document.getElementById('galeria-recuerdos');
-        const musica = document.getElementById('musica-fondo');
         const controlAudio = document.getElementById('control-audio');
 
-        // Acción al presionar el primer botón
+        // Al presionar "Mi regalo te espera"
         btnRegalo.addEventListener('click', () => {
-            // Reproducir música al darle al primer botón
-            if(musica) {
-                musica.play().catch(e => console.log("Navegador bloqueó el autoplay."));
-                // Sincronizar el reproductor visible abajo
-                controlAudio.play().catch(e => console.log(""));
+            // Inicia la música del único reproductor
+            if(controlAudio) {
+                controlAudio.play().catch(e => console.log("El navegador requiere que el usuario interactúe más antes de autoplay."));
             }
 
             inicioSec.style.display = 'none';
@@ -357,14 +348,14 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Acción al presionar el segundo botón
+        // Al presionar "Nuestros Recuerdos"
         btnRecuerdos.addEventListener('click', () => {
             btnRecuerdos.style.display = 'none'; 
             galeriaSec.style.display = 'flex';
             galeriaSec.scrollIntoView({ behavior: 'smooth' });
         });
 
-        // Lógica del Lightbox (Visor de fotos)
+        // Lógica del Visor de fotos
         const itemsGaleria = document.querySelectorAll('.item-foto');
         const visor = document.getElementById('visor-fotos');
         const imgVisor = document.getElementById('img-visor');
